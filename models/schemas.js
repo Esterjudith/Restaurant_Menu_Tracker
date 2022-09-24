@@ -15,7 +15,7 @@ let userSchema = new schema({
 })
 
 let menu = mongoose.model('menu', menuSchema, 'menu');
-let users = mongoose.model('users', menuSchema, 'users');
+let users = mongoose.model('users', userSchema, 'users');
 let mySchemas = {
     'menu': menu,
     'users': users

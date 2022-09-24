@@ -2,7 +2,7 @@ const schemas = require('../models/schemas.js')
 const bcrypt = require('bcrypt')
 
 exports.getLogin = (req, res) => {
-    res.render('login', { title: 'login', loggedIn: false, error: null })
+    res.render('login', { title: 'Login', loggedIn: false, error: null })
 }
 
 exports.getSignup = (req, res) => {
@@ -25,10 +25,10 @@ exports.postLogin = async (req, res) => {
     let users = schemas.users
     let qry = { email: email }
 
-    if (email !== '' && pass !== '') {
+    if (email != '' && pass != '') {
         let usersResult = await users.findOne(qry)
             .then(async (data) => {
-                console.log(data)
+
                 if (data) {
                     let passResult = await bcrypt.compare(pass, data.pwd)
                         .then((isMatch) => {
@@ -39,7 +39,7 @@ exports.postLogin = async (req, res) => {
                         })
                 }
             })
-        console.log(usersResult)
+
     }
     if (loginSuccess === true) {
         res.redirect('/')
@@ -52,7 +52,7 @@ exports.postSignup = async (req, res) => {
     let email = req.body.emailInput
     let pass = req.body.pwdInput
 
-    if (email !== '' && pass !== '') {
+    if (email != '' && pass != '') {
         let users = schemas.users
         let qry = { email: email }
 
