@@ -15,7 +15,7 @@ module.exports = {
             let id = req.param.id
             let err = ''
 
-            let menu = schema.menu
+            let menu = schemas.menu
             let qry = { _id: id }
 
             let itemResult = await menu.find(qry)
@@ -33,7 +33,7 @@ module.exports = {
         if (!sesh.loggedIn) {
             res.redirect('/login')
         } else {
-            let menu = schemas.Menu
+            let menu = schemas.menu
             let menuId = req.params.id
             let qry = { _id: id }
             let deleteResult = await menu.deleteOne(qry)
